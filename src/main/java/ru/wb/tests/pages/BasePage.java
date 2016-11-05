@@ -73,9 +73,13 @@ public class BasePage extends Browser {
         }
     }
 
-    public void waitForElementVisibility(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, WAITING_TIME_OUT_IN_SECONDS);
+    public void waitForElementVisibility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForElementVisibility(By locator) {
+        waitForElementVisibility(locator, WAITING_TIME_OUT_IN_SECONDS);
     }
 
     public void waitForElementInvisibility(By locator) {
